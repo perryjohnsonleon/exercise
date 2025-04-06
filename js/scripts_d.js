@@ -1,4 +1,4 @@
-let stockId_list=['2330','2002','1102','2454','2027','1101'] ; // 台積電(2330), 東元(1504) 鴻海(2317) , 亞泥(1102) , 聯發科(2454), 大成鋼(2027) , 京元電(2449)  聯強(2347) , 台泥(1101) , 大同(2371) , 中鋼(2002)
+const stockId_list=['2330','2002','1102','2454','2027','1101']; // 台積電(2330), 東元(1504) 鴻海(2317) , 亞泥(1102) , 聯發科(2454), 大成鋼(2027) , 京元電(2449)  聯強(2347) , 台泥(1101) , 大同(2371) , 中鋼(2002)
 const fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1" , 
 		str_1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , str_3=":STOCK&quote=1" ;
 const element1 = document.getElementById("myBar1");
@@ -27,28 +27,22 @@ const element1 = document.getElementById("myBar1");
           function refreshTime() {
              switch ( $(this).val()) {
 					  case "A": 
-							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexa.htm'
-							stockId_list=['2330','2891','1102','2454','2347','1504'];
+							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexa.htm' ;
 							break;
 					  case "B":
-							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexb.htm'					  
-							stockId_list=['2330','1101','1102','2454','1301','2002'];
+							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexb.htm'	;				  
 							break;
 					  case "C": 
-							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexc.htm'
-							stockId_list=['2330','2382','2324','2454','2317','2356']; 
+							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexc.htm' ;
 							break;
 					  case "D": 
-							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexd.htm'
-							stockId_list=['2330','2002','1102','2454','2027','1101'];
+							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexd.htm' ;
 							break;
 					  case "E": 
-							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexe.htm'
-							stockId_list=['2330','2884','2891','2454','2886','2881'];
+							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexe.htm' ;
 							break;
 					  case "F": 
-							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexf.htm'
-							stockId_list=['2330','2618','2610','2603','2609','2615'];  
+							window.location.href = 'https://https://perryjohnsonleon.github.io/exercise/indexf.htm' ;
 							break;
                       case "0": 
                            width = 100;
