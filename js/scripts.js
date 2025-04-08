@@ -22,7 +22,8 @@ const element1 = document.getElementById("myBar1");
       element1.style.width = '0%';  
       document.getElementById("s01").addEventListener("change", refreshTime); 
       document.getElementById("s02").addEventListener("change", optionSel); 			  
-      });                            
+      });
+		                              
           function refreshTime() {
              switch ( $(this).val()) {
 					  case "A": 
@@ -174,7 +175,7 @@ const element1 = document.getElementById("myBar1");
                     		  var itemData2 = item2;	
                     		  $.each(itemData2,function(key3,item3){  
                              if (key3 === '200009') {
-                 	           $("#span11").html("<button onclick='showElement2(" + stockId_list[0] + ");'>" + item3 + "</button>"); 
+                 	           $("#span11").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[0] + ");'>" + item3 + "</button>"); 
                              }
                              if (key3 === '6') {
                  	           $("#span12").html(item3);}
@@ -236,7 +237,7 @@ const element1 = document.getElementById("myBar1");
                     		  var itemData21 = item21;	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span21").html("<button onclick='showElement2(" + stockId_list[1] + ");'>" + item31 + "</button>"); 
+								$("#span21").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[1] + ");'>" + item31 + "</button>"); 
                              }
                              if (key31 === '6') {
                  	              $("#span22").html(item31); 
@@ -300,7 +301,7 @@ const element1 = document.getElementById("myBar1");
                     		 // console.log(itemData21); 	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span31").html("<button onclick='showElement2(" + stockId_list[2] + ");'>" + item31 + "</button>");                              }
+								$("#span31").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[2] + ");'>" + item31 + "</button>");                              }
                              if (key31 === '6') {
                  	              $("#span32").html(item31); 
                              }
@@ -364,7 +365,7 @@ const element1 = document.getElementById("myBar1");
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-						   $("#span41").html("<button onclick='showElement2(" + stockId_list[3] + ");'>" + item31 + "</button>");                         }
+						   $("#span41").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[3] + ");'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span42").html(item31); 
                         }
@@ -428,7 +429,7 @@ const element1 = document.getElementById("myBar1");
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-							$("#span51").html("<button onclick='showElement2(" + stockId_list[4] + ");'>" + item31 + "</button>");                         }
+							$("#span51").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[4] + ");'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span52").html(item31); 
                         }
@@ -492,7 +493,7 @@ const element1 = document.getElementById("myBar1");
                       var itemData21 = item21;
                       $.each(itemData21,function(key31,item31){  
                      if (key31 === '200009') {
-						   $("#op11").html("<button onclick='showElement2(" + stockId_list[5] + ");'>" + item31 + "</button>");                      }
+						   $("#op11").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[5] + ");'>" + item31 + "</button>");                      }
                      if (key31 === '6') {
                            $("#op12").html(item31); 
                      }
@@ -552,7 +553,13 @@ const element1 = document.getElementById("myBar1");
           $.each(itemData11,function(key21,item21){
             if (key21  === 'c' ){
                 $("#wi-c").html(item21);                     	                   	 	
-            }           
+            }    
+			if (key21  === 'h' ){
+			   $("#wi-h").html(item21 + 'H' ); 
+				}
+			if (key21  === 'l' ){
+			   $("#wi-l").html(item21 + 'L'); 
+				}		
             if (key21  === 'quote' ) {
                 var itemData21 = item21;
                 // console.log(itemData21); 	

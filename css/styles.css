@@ -2546,6 +2546,11 @@ textarea.form-control-lg {
   margin-right: 1rem;
 }
 
+.btn-expand {
+  background-color:#b0b0b0; 
+  color: #000;;
+  border: none;
+}	
 .btn-check {
   position: absolute;
   clip: rect(0, 0, 0, 0);
