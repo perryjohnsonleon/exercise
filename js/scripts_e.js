@@ -30,7 +30,7 @@ const element1 = document.getElementById("myBar1");
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_a.htm' ;
 							break;
 					  case "B":
-							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_b.htm' ;
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_b.htm'	;
 							break;
 					  case "C": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_c.htm' ;
@@ -152,8 +152,7 @@ const element1 = document.getElementById("myBar1");
 
             }			
 			
-                     
-          function getDATA() {
+		  function getDATA() {
            	   var d = new Date() , span_rpt="" , fetchUrl_str="" ;
                $('#date1').html((d.getMonth()+1) + '/' + d.getDate() + '&nbsp;' + d.getHours() + ':'  + d.getMinutes());
                if (width === 100 ) {
@@ -164,18 +163,18 @@ const element1 = document.getElementById("myBar1");
                       element1.style.width = width + '%'; 
                    } 
                 fetchUrl_str=fetchUrl_str1 + stockId_list[0] + fetchUrl_str2 ;	
+				console.log(fetchUrl_str) ;
                 $.getJSON(fetchUrl_str,function(data){
                   $.each(data,function(key1,item1){
                      if (key1 === 'data') {
                    	//  $('ul').append('<li>'+item1+'</li>');
-                    var itemData = item1 ;
-				    span_rpt="<span class='span_rpt'>(<button onclick='showElement1(1102);'>M</button>)</span><span class='span_rpt'>(<button onclick='showElement2(" + stockId_list[0] + ";'>S</button>)</span>" ; 	          
+                    var itemData = item1 ;          
                     $.each(itemData,function(key2,item2){
                     	if (key2  === 'quote' ) {
                     		  var itemData2 = item2;	
                     		  $.each(itemData2,function(key3,item3){  
                              if (key3 === '200009') {
-                 	           $("#span11").html(item3 + span_rpt); 
+                 	           $("#span11").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[0] + ");'>" + item3 + "</button>"); 
                              }
                              if (key3 === '6') {
                  	           $("#span12").html(item3);}
@@ -231,14 +230,13 @@ const element1 = document.getElementById("myBar1");
                   $.each(data,function(key11,item11){
                      if (key11 === 'data') {
                      var itemData = item11 ;
-                    span_rpt="<span class='span_rpt'>(<button onclick='showElement1(2324);'>M</button>)</span><span class='span_rpt'>(<button onclick='showElement2(" + stockId_list[1] + ");'>S</button>)</span>" ; 	               	
-                    var itemData11 = item11; 	          
+					 var itemData11 = item11; 	          
                     $.each(itemData11,function(key21,item21){
                     	if (key21  === 'quote' ) {
                     		  var itemData21 = item21;	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-                 	              $("#span21").html(item31 + span_rpt); 
+								$("#span21").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[1] + ");'>" + item31 + "</button>"); 
                              }
                              if (key31 === '6') {
                  	              $("#span22").html(item31); 
@@ -296,15 +294,13 @@ const element1 = document.getElementById("myBar1");
                      if (key11 === 'data') {
                    	//  $('ul').append('<li>'+item1+'</li>');                   	
                     var itemData11 = item11; 
-					          span_rpt="<span class='span_rpt'>(<button onclick='showElement1(1102);'>M</button>)</span><span class='span_rpt'>(<button onclick='showElement2(" +  stockId_list[2] + ");'>S</button>)</span>" ; 	 					
                     $.each(itemData11,function(key21,item21){
                     	if (key21  === 'quote' ) {
                     		  var itemData21 = item21;
                     		 // console.log(itemData21); 	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-                 	              $("#span31").html(item31 + span_rpt); 	
-                             }
+								$("#span31").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[2] + ");'>" + item31 + "</button>");                              }
                              if (key31 === '6') {
                  	              $("#span32").html(item31); 
                              }
@@ -362,15 +358,13 @@ const element1 = document.getElementById("myBar1");
                 if (key11 === 'data') {
                 //  $('ul').append('<li>'+item1+'</li>');                   	
                var itemData11 = item11; 
-               span_rpt="<span class='span_rpt'>(<button onclick='showElement1(1102);'>M</button>)</span><span class='span_rpt'>(<button onclick='showElement2(" +  stockId_list[3] + ");'>S</button>)</span>" ; 	 					
                $.each(itemData11,function(key21,item21){
                  if (key21  === 'quote' ) {
                      var itemData21 = item21;
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-                            $("#span41").html(item31 + span_rpt); 	
-                        }
+						   $("#span41").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[3] + ");'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span42").html(item31); 
                         }
@@ -428,15 +422,13 @@ const element1 = document.getElementById("myBar1");
                 if (key11 === 'data') {
                 //  $('ul').append('<li>'+item1+'</li>');                   	
                var itemData11 = item11; 
-               span_rpt="<span class='span_rpt'>(<button onclick='showElement1(1102);'>M</button>)</span><span class='span_rpt'>(<button onclick='showElement2(" +  stockId_list[4] + ");'>S</button>)</span>" ; 	 					
                $.each(itemData11,function(key21,item21){
                  if (key21  === 'quote' ) {
                      var itemData21 = item21;
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-                            $("#span51").html(item31 + span_rpt); 	
-                        }
+							$("#span51").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[4] + ");'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span52").html(item31); 
                         }
@@ -495,15 +487,12 @@ const element1 = document.getElementById("myBar1");
              if (key11 === 'data') {
                //  $('ul').append('<li>'+item1+'</li>');                   	
             var itemData11 = item11; 
-            // span_rpt="<span class='span_rpt'>(<button onclick='showElement1(3481);'>M</button>)</span><span class='span_rpt'>(<a href='showElement2(3481);'>S</a>)</span>" ; 	  										
-            span_rpt="<span class='span_rpt'>(<button onclick='showElement1(" + str_2 + " );'>M</button>)</span><span class='span_rpt'>(<button onclick='showElement2(" + str_2 + " );'>S</button>)</span>" ; 	 
             $.each(itemData11,function(key21,item21){
                 if (key21  === 'quote' ) {
                       var itemData21 = item21;
                       $.each(itemData21,function(key31,item31){  
                      if (key31 === '200009') {
-                           $("#op11").html(item31 + span_rpt); 
-                     }
+						   $("#op11").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[5] + ");'>" + item31 + "</button>");                      }
                      if (key31 === '6') {
                            $("#op12").html(item31); 
                      }
@@ -563,7 +552,13 @@ const element1 = document.getElementById("myBar1");
           $.each(itemData11,function(key21,item21){
             if (key21  === 'c' ){
                 $("#wi-c").html(item21);                     	                   	 	
-            }           
+            }    
+			if (key21  === 'h' ){
+			   $("#wi-h").html(item21 + 'H' ); 
+				}
+			if (key21  === 'l' ){
+			   $("#wi-l").html(item21 + 'L'); 
+				}		
             if (key21  === 'quote' ) {
                 var itemData21 = item21;
                 // console.log(itemData21); 	
