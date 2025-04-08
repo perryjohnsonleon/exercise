@@ -23,7 +23,7 @@ const element1 = document.getElementById("myBar1");
       document.getElementById("s01").addEventListener("change", refreshTime); 
       document.getElementById("s02").addEventListener("change", optionSel); 			  
       });
-		                              
+		// *******                              
           function refreshTime() {
              switch ( $(this).val()) {
 					  case "A": 
