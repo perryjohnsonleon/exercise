@@ -1,10 +1,7 @@
-const element1 = document.getElementById("myBar1");
-const mask_item1 = document.getElementById("ymsitem-msg");
-let show_YearRpt="" , show_SeasonRpt="" , show_MonthRpt="" , tr_line="" , itemYear_stockname="" ; 
+	const element1 = document.getElementById("myBar1");
+	let show_YearRpt="" , show_SeasonRpt="" , show_MonthRpt="" , tr_line="" , itemYear_stockname="" ; 
     let width = 0 , intervalIds = [] , itemYear_arry1 = [] , itemYear_arry2 = [] , itemYear_arry3 = []  ;			  
     window.addEventListener('load',function(){
-  if (mask_item1.style.display == "none" )
-	  hiddenMsg1.style.display = "none" ; 
 	  getDATA();
 	  getWDATA();
 	  element1.style.width = '0%';  
