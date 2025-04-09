@@ -8,65 +8,72 @@
 	  document.getElementById("s01").addEventListener("change", refreshTime); 			  
     });
                             
-    function refreshTime() {
-       switch ( $(this).val()) {
-                case "0": 
-                    width = 100;
-        refSec = 99999 ;
-                     element1.style.width = '0%'; 
-                    break;
-                case "1": 
-                    refSec = 3000 ;
-                     break;
-                case "2":
-                     refSec = 5000 ;
-                     break;
-                case "3": 
-                     refSec = 10000 ;
-                     break;
-                case "4": 
-                     refSec = 20000 ;
-                     break;
-                case "5": 
-                     refSec = 30000 ;
-                     break;
-                case "6": 
-                   refSec = 60000 ;
-                     break;
-                case "7": 
-                     refSec = 600000 ;
-                     break; 
-                case "8": 
-                    refSec = 900000 ;
-                     break;
-                case "9": 
-                   refSec = 1200000 ;
-                     break;
-                case "10": 
-                     refSec = 1800000 ;
-                    break;                                     
-                default:
-                   return;
-              } 
-  //   console.log("Refresh time:",refSec);
-     while(intervalIds.length){
-         //  console.log("No0:",refSec);
-                    clearInterval(intervalIds.pop());
-              }
-     if  (refSec != 99999 ) {
-       // console.log("No1:",refSec);
-         id = setInterval(getDATA,refSec);
-         intervalIds.push(id); 
-     }
-     else 
-     {
+          function refreshTime() {
+             switch ( $(this).val()) {
+					  case "A": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_a.htm' ;
+							break;
+					  case "B":
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_b.htm'	;
+							break;
+					  case "C": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_c.htm' ;
+							break;
+					  case "D": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_d.htm' ;
+							break;
+					  case "E": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_e.htm' ;
+							break;
+					  case "F": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_f.htm' ;
+							break;
+					  case "Z": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_z.htm' ;
+							break;
+                      case "0": 
+                           width = 100;
+                           refSec = 99999 ;
+                           element1.style.width = '0%'; 
+                           break;
+                      case "1": 
+                      	   refSec = 3000 ;
+                           break;
+                      case "2":
+                           refSec = 5000 ;
+                           break;
+                      case "3": 
+                           refSec = 10000 ;
+                           break;
+                      case "5": 
+                      	   refSec = 30000 ;
+                           break;
+                      case "6": 
+                    	   refSec = 60000 ;
+                           break;
+                      case "7": 
+                   	      refSec = 600000 ;
+                           break; 
+                      case "10": 
+                   	      refSec = 1800000 ;
+                           break;                                     
+                      default:
+						  return;
+                    } 
+				   while(intervalIds.length){
+                          clearInterval(intervalIds.pop());
+               }
+				   if  (refSec != 99999 ) {
+				       id = setInterval(getDATA,refSec);
+				       intervalIds.push(id); 
+					 }
+					 else 
+					 {
           while(intervalIds.length){
-                    clearInterval(intervalIds.pop());
-                  }
-      
-     }
-
-      }
+                          clearInterval(intervalIds.pop());
+          }						
+					 }
+            }
                      
     function getDATA() {
         var d = new Date() , span_rpt="" ;
