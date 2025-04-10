@@ -44,6 +44,9 @@ const element1 = document.getElementById("myBar1");
 					  case "F": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_f.htm' ;
 							break;
+					  case "-1": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
+							break;
                       case "0": 
                            width = 100;
                            refSec = 99999 ;
@@ -159,8 +162,8 @@ const element1 = document.getElementById("myBar1");
 				          width = 0; 
                    } else {
                     width += 7 ;
-                   if (width > 95) width = width-95 ; 
-                      element1.style.width = width + '%'; 
+                    if (width > 95) width = width-95 ; 
+                      element1.style.width = width.toString() + '%'; 
                    } 
                 fetchUrl_str=fetchUrl_str1 + stockId_list[0] + fetchUrl_str2 ;	
 				console.log(fetchUrl_str) ;

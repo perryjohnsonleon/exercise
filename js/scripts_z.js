@@ -31,6 +31,9 @@
 					  case "Z": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_z.htm' ;
 							break;
+					  case "-1": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
+							break;
                       case "0": 
                            width = 100;
                            refSec = 99999 ;
@@ -81,7 +84,6 @@
          if (width === 100 ) {
         width = 0; 
              } else {  
-              console.log("OKK!" + width.toString()) ; 
               width += 7 ;
               if (width > 95) width = width-95 ; 
               element1.style.width = width + '%'; 
