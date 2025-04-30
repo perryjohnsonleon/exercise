@@ -2,22 +2,13 @@ let stockId_list=['2330','1402','1102','2002','2027','1101'] ; // 台積電(2330
 const fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1" , 
 		str_1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , str_3=":STOCK&quote=1" ;
 const element1 = document.getElementById("myBar1");
-		  const mask_item1 = document.getElementById("hiddenElement1");
-		  const mask_item2 = document.getElementById("hiddenElement2");
-		  const mask_item3 = document.getElementById("hiddenElement3");
+		  const mask_item1 = document.getElementById("hiddenMsg1");
 		  let show_YearRpt="" , show_SeasonRpt="" , show_MonthRpt="" , tr_line="" , itemYear_stockname="" ; 
-		  let width = 0 , intervalIds = [] , itemYear_arry1 = [] , itemYear_arry2 = [] , itemYear_arry3 = []  ;
+		  let width = 0 , intervalIds = [] , itemYear_arry11 = [] , itemYear_arry12 = [] , itemYear_arry13 = [] , itemYear_arry21 = [] , itemYear_arry22 = [] , itemYear_arry23 = [] ;
 		  let str_2=stockId_list[5], ajaxURL= str_1 + str_2 + str_3 , s01_val="0" ; 				  
           window.addEventListener('load',function(){
 	    // document.getElementById('hiddenElement').classList.add('displayElementYN');
-		  if (mask_item1.style.display == "none" )
-			  hiddenMsg1.style.display = "none" ; 
-		  if (!mask_item1.style.displayElementYN ) { 
-				mask_item1.style.display = 'none';
-			   }
-            else 
-			{ 
-		    }
+		  mask_item1.style.display == "none" ;
       getDATA();
       element1.style.width = '0%';  
       document.getElementById("s01").addEventListener("change", refreshTime); 
@@ -167,7 +158,6 @@ const element1 = document.getElementById("myBar1");
                       element1.style.width = width + '%'; 
                    } 
                 fetchUrl_str=fetchUrl_str1 + stockId_list[0] + fetchUrl_str2 ;	
-				console.log(fetchUrl_str) ;
                 $.getJSON(fetchUrl_str,function(data){
                   $.each(data,function(key1,item1){
                      if (key1 === 'data') {
@@ -178,7 +168,7 @@ const element1 = document.getElementById("myBar1");
                     		  var itemData2 = item2;	
                     		  $.each(itemData2,function(key3,item3){  
                              if (key3 === '200009') {
-                 	           $("#span11").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[0] + ");'>" + item3 + "</button>"); 
+                 	           $("#span11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[0] + ");'>" + item3 + "</button>"); 
                              }
                              if (key3 === '6') {
                  	           $("#span12").html(item3);}
@@ -240,7 +230,7 @@ const element1 = document.getElementById("myBar1");
                     		  var itemData21 = item21;	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span21").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[1] + ");'>" + item31 + "</button>"); 
+								$("#span21").html("<button class='btn-expand' onclick='showElement(" + stockId_list[1] + ");'>" + item31 + "</button>"); 
                              }
                              if (key31 === '6') {
                  	              $("#span22").html(item31); 
@@ -304,7 +294,7 @@ const element1 = document.getElementById("myBar1");
                     		 // console.log(itemData21); 	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span31").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[2] + ");'>" + item31 + "</button>");                              }
+								$("#span31").html("<button class='btn-expand' onclick='showElement(" + stockId_list[2] + ");'>" + item31 + "</button>");                              }
                              if (key31 === '6') {
                  	              $("#span32").html(item31); 
                              }
@@ -368,7 +358,7 @@ const element1 = document.getElementById("myBar1");
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-						   $("#span41").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[3] + ");'>" + item31 + "</button>");                         }
+						   $("#span41").html("<button class='btn-expand' onclick='showElement(" + stockId_list[3] + ");'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span42").html(item31); 
                         }
@@ -432,7 +422,7 @@ const element1 = document.getElementById("myBar1");
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-							$("#span51").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[4] + ");'>" + item31 + "</button>");                         }
+							$("#span51").html("<button class='btn-expand' onclick='showElement(" + stockId_list[4] + ");'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span52").html(item31); 
                         }
@@ -496,7 +486,7 @@ const element1 = document.getElementById("myBar1");
                       var itemData21 = item21;
                       $.each(itemData21,function(key31,item31){  
                      if (key31 === '200009') {
-						   $("#op11").html("<button class='btn-expand' onclick='showElement2(" + stockId_list[5] + ");'>" + item31 + "</button>");                      }
+						   $("#op11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[5] + ");'>" + item31 + "</button>");                      }
                      if (key31 === '6') {
                            $("#op12").html(item31); 
                      }
@@ -612,20 +602,18 @@ const element1 = document.getElementById("myBar1");
         return new Promise((resolve) => {
         setTimeout(() => {
 			// Step1 URL Begin
-			   $("#hiddenMsg1").html("<span>Wait data ...<span>"); 
-			   if (mask_item1.style.display == "none" )
-				   hiddenMsg1.style.display = "block" ;
+			   $("#hiddenElement1").html("<span>Waitting data ...<span>"); 
 				   var urlStr= "https://marketinfo.api.cnyes.com/mi/api/v1/financialIndicator/revenue/TWS:" + stockNo + ":STOCK?year=5&to=1572364800";
                 $.getJSON(urlStr,function(data){
                   $.each(data,function(key1,item1){
                      if (key1 === 'data') {
                         var itemData = item1[0]; 							
                         $.each(itemData,function(key2,item2){
-						        if (key2  === 'name' ) {
+                    if (key2  === 'name' ) {
                              itemYear_stockname = item2 ;
                             }								
                     	   if (key2  === 'revenue' ) {
-                            itemYear_arry2= item2 ;
+                            itemYear_arry12= item2 ;
                     		    var itemData2 = item2;
                     		    var itemDataTemp ;
                     		  $.each(itemData2,function(key3,item3){
@@ -634,7 +622,7 @@ const element1 = document.getElementById("myBar1");
  		                         		              		
                     	}  //  ***************************************
                     	   if (key2  === 'revenueYOY' ) {
-							   	          itemYear_arry3= item2;
+							   	          itemYear_arry13= item2;
                     		    var itemData2 = item2;
                     		    var itemDataTemp ;
                     		   // YOY - starting
@@ -649,66 +637,23 @@ const element1 = document.getElementById("myBar1");
                     		    // YOY - Ending              		              		
                     	}  //  ***************************************						
                     	   if (key2  === 'time' ) {
-							              itemYear_arry1= item2 ;		
+							              itemYear_arry11= item2 ;		
                     	}  //  ***************************************							
 
                       });               
                   }
                  });
-                });		
+                });	
+          // Step1 URL End	
            resolve("Step 1 結果");
         }, 700);
        });
    }
 
-   function step12() {
-        return new Promise((resolve) => {
-        setTimeout(() => {		 
-			 tr_line ="",show_YearRpt="" ;
-			 var item2currency=0 ;
-             for (let i = 0; i < itemYear_arry1.length; i++) {
-				 item2currency = (itemYear_arry2[i]/1000) + "" ;
-				 item2currency = item2currency.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-				 tr_line = tr_line + '<tr><td>' + timestampToTime(itemYear_arry1[i]) + '</td><td>' + item2currency + '</td><td>' +　itemYear_arry3[i]　+'</td></tr>' ;
-			 } ;
-           resolve("Step 2 結果");
-        }, 500);
-      });
-   }
-
-   function step13() {
-        return new Promise((resolve) => {
-        setTimeout(() => {						 
-		    show_YearRpt='<table width="33%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:33%">[' + itemYear_stockname + ']月財報</td><td style="width:25%">營收(千元)</td><td style="width:33%">年增率</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
-         resolve("Step 3 結果");
-        }, 250);
-    });
-   }
-   
-   function step14() {
+   function step12(stockNo) {
         return new Promise((resolve) => {
         setTimeout(() => {
-            $("#hiddenElement1").html(show_YearRpt); 
-            if (mask_item1.style.display == "none" )
-            {
-            hiddenMsg1.style.display = "none" ; 
-                    mask_item1.style.display = "block"  // Change display to block to make it visible
-                  }
-            else
-                  mask_item1.style.display = "none" ;
-
-            resolve("Step 4 結果");
-        }, 10);
-    });
-   }
-
-   function step21(stockNo) {
-    return new Promise((resolve) => {
-    setTimeout(() => {
-  // Step1 URL Begin
-     $("#hiddenMsg1").html("<span>Wait data ...<span>"); 
-     if (mask_item1.style.display == "none" )
-       hiddenMsg1.style.display = "block" ;
+       // Step2 URL Begin
        var urlStr= "https://marketinfo.api.cnyes.com/mi/api/v1/financialIndicator/eps/TWS:" + stockNo + ":STOCK?resolution=Q&acc=false&year=5&to=1573488000";
             $.getJSON(urlStr,function(data){
               $.each(data,function(key1,item1){
@@ -720,7 +665,7 @@ const element1 = document.getElementById("myBar1");
                           itemYear_stockname = item2 ;
                         }								
                       if (key2  === 'epsYOY' ) {
-                        itemYear_arry2= item2 ;
+                        itemYear_arry22= item2 ;
                         var itemData2 = item2;
                         var itemDataTemp ;
                        // YearRevenue - starting
@@ -730,8 +675,7 @@ const element1 = document.getElementById("myBar1");
                         // YearRevenue - Ending                                                  
                   }  //  ***************************************
                       if (key2  === 'eps' ) {
-                          itemYear_arry3= item2;
-                      //  console.log (itemYear_arry3) ; // ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+                          itemYear_arry23= item2;
                         var itemData2 = item2;
                         var itemDataTemp ;
                        // YOY - starting
@@ -741,115 +685,108 @@ const element1 = document.getElementById("myBar1");
                       // YOY - Ending              		              		
                   }  //  ***************************************						
                 if (key2  === 'time' ) {
-                        itemYear_arry1= item2 ;		
+                        itemYear_arry21= item2 ;		
                   }  //  ***************************************							
                   });               
               }
              });
             });		
-  // Step1 URL End
-       resolve("Step_1 結果");
-    }, 700);
-   });
-}
+        // Step2 URL End   
+       // ~~~~~~~ insert after
+        resolve("Step 2 結果");
+        }, 700);
+      });
+   }
 
-function step22() {
-    return new Promise((resolve) => {
-    setTimeout(() => {		 
-    tr_line ="",show_SeasonRpt="" ;
-    var item2currency=0;
-    var espEarning_digit=0; 
-  //  var espYOY_arry = [...itemYear_arry2].reverse();
-    var espDate_arry = [...itemYear_arry1].reverse();
-    var espEarning_arry = [...itemYear_arry3].reverse(); 
-    var accuEarning_arry = espEarning_arry ;
-    var text,subStr,quarterDateStr,quarterDate_arry ;
-    for (var i = 0; i < espDate_arry.length; i++) {
-      espDate_arry[i]=timestampToTime(espDate_arry[i]) ;
-      subStr =espDate_arry[i].substring(espDate_arry[i].indexOf("-")+1) ;
-      // espEarning_digit=espEarning_arry[i];
-      switch (subStr) {
-        case "01": 
-            accuEarning_arry[i]= espEarning_arry[i] ;
-            espEarning_digit=accuEarning_arry[i] ;
-            accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
-            break ;
-        case "04": 
-            espEarning_digit=accuEarning_arry[i] ;
-            accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
-            accuEarning_arry[i] += espEarning_arry[i-1] ;
-            espEarning_digit= accuEarning_arry[i] ;
-            accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ; 
-            break;
-        case "07": 
-            espEarning_digit=accuEarning_arry[i] ;
-            accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
-            accuEarning_arry[i] += espEarning_arry[i-1] ;
-            espEarning_digit= accuEarning_arry[i] ;
-            accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ;
-            break; 
-        case "10": 
-            espEarning_digit=accuEarning_arry[i] ;
-            accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
-            accuEarning_arry[i] += espEarning_arry[i-1] ;
-            espEarning_digit= accuEarning_arry[i] ;
-            accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ;
-            break;      
-
-      }     
-    } ; 
-    accuEarning_arry.reverse() ;
-    for (var i = 0; i < itemYear_arry1.length; i++) {
-        item2currency = itemYear_arry2[i]  ;
-        quarterDateStr=timestampToTime(itemYear_arry1[i]) ;
-        quarterDate_arry= quarterDateStr.split("-") ;
-        switch (quarterDate_arry[1]) {
+   function step13() {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+        tr_line ="",show_YearRpt="" ;
+        var item2currency=0 ;
+        for (let i = 0; i < itemYear_arry11.length; i++) {
+            item2currency = (itemYear_arry12[i]/1000) + "" ;
+            item2currency = item2currency.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+            tr_line = tr_line + '<tr><td>' + timestampToTime(itemYear_arry11[i]) + '</td><td>' + item2currency + '</td><td>' +　itemYear_arry13[i]　+'</td></tr>' ;
+        } ;						 
+		    show_YearRpt='<table width="33%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:33%">[' + itemYear_stockname + ']月財報</td><td style="width:25%">營收(千元)</td><td style="width:33%">年增率</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
+        // ~~~~~ insert before
+        tr_line =""
+        var item2currency=0;
+        var espEarning_digit=0; 
+        var espDate_arry = [...itemYear_arry21].reverse();
+        var espEarning_arry = [...itemYear_arry23].reverse(); 
+        var accuEarning_arry = espEarning_arry ;
+        var text,subStr,quarterDateStr,quarterDate_arry ;
+        for (var i = 0; i < espDate_arry.length; i++) {
+          espDate_arry[i]=timestampToTime(espDate_arry[i]) ;
+          subStr =espDate_arry[i].substring(espDate_arry[i].indexOf("-")+1) ;
+          switch (subStr) {
             case "01": 
-                quarterDate_arry[1]="Q1"
-                break;
+                accuEarning_arry[i]= espEarning_arry[i] ;
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                break ;
             case "04": 
-                quarterDate_arry[1]="Q2"
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                accuEarning_arry[i] += espEarning_arry[i-1] ;
+                espEarning_digit= accuEarning_arry[i] ;
+                accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ; 
                 break;
             case "07": 
-                quarterDate_arry[1]="Q3"
-                break;
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                accuEarning_arry[i] += espEarning_arry[i-1] ;
+                espEarning_digit= accuEarning_arry[i] ;
+                accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ;
+                break; 
             case "10": 
-                quarterDate_arry[1]="Q4"
-                break;
-        }
-        tr_line = tr_line + '<tr><td><b>' +  quarterDate_arry[0] + quarterDate_arry[1] + '</b></td><td>' + item2currency + '</td><td>' +　itemYear_arry3[i]　+'</td><td>' +　accuEarning_arry[i]　+'</td></tr>' ;
-   } ;
-       console.log("Step_2 完成");
-       resolve("Step_2 結果");
-    }, 500);
-  });
-}
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                accuEarning_arry[i] += espEarning_arry[i-1] ;
+                espEarning_digit= accuEarning_arry[i] ;
+                accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ;
+                break;      
 
-function step23() {
-    return new Promise((resolve) => {
-    setTimeout(() => {						 
-    show_SeasonRpt='<table width="30%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:40%;color:yellow">[' + itemYear_stockname + ']季財報</td><td style="width:40%">epsYOY(%)</td><td style="width:20%">EPS</td><td style="width:35%">累計EPS</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
-    console.log("Step_3 完成");
-     resolve("Step_3 結果");
-    }, 250);
-});
-}
-
-function step24() {
-    return new Promise((resolve) => {
-    setTimeout(() => {
-        $("#hiddenElement1").html(show_SeasonRpt); 
-  if (mask_item1.style.display == "none" )
-     {
-     hiddenMsg1.style.display = "none" ; 
-             mask_item1.style.display = "block"  // Change display to block to make it visible
-           }
-  else
-           mask_item1.style.display = "none" ;
-     resolve("Step_4 結果");
-    }, 10);
-});
-}
+          }     
+        } ; 
+        accuEarning_arry.reverse() ;
+        for (var i = 0; i < itemYear_arry21.length; i++) {
+            item2currency = itemYear_arry22[i]  ;
+            quarterDateStr=timestampToTime(itemYear_arry21[i]) ;
+            quarterDate_arry= quarterDateStr.split("-") ;
+            switch (quarterDate_arry[1]) {
+                case "01": 
+                    quarterDate_arry[1]="Q1"
+                    break;
+                case "04": 
+                    quarterDate_arry[1]="Q2"
+                    break;
+                case "07": 
+                    quarterDate_arry[1]="Q3"
+                    break;
+                case "10": 
+                    quarterDate_arry[1]="Q4"
+                    break;
+            }
+            tr_line = tr_line + '<tr><td><b>' +  quarterDate_arry[0] + quarterDate_arry[1] + '</b></td><td>' + item2currency + '</td><td>' +　itemYear_arry23[i]　+'</td><td>' +　accuEarning_arry[i]　+'</td></tr>' ;
+        } ;
+        show_SeasonRpt='<table width="30%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:40%;color:yellow">[' + itemYear_stockname + ']季財報</td><td style="width:40%">epsYOY(%)</td><td style="width:20%">EPS</td><td style="width:35%">累計EPS</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
+        // ~~~~~ insert after
+        resolve("Step 3 結果");
+        }, 250);
+    });
+   }
+   
+   function step14() {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+        $("#hiddenElement1").html(show_YearRpt); 
+        $("#hiddenElement2").html(show_SeasonRpt);   
+        resolve("Step 4 結果");
+        }, 10);
+    });
+   }
 
 
    // 使用 then 來串接 Promise，依序執行
@@ -868,12 +805,12 @@ function step24() {
       });
 	// ===使用 then == Ending========================== */
 	  
-      async function executeStepsSequentially1(stockNo) {
+      async function executeStepsSequentially(stockNo) {
       try {
          let result11 = await step11(stockNo);
        // console.log(result1); // Step 11 結果
 
-         let result12 = await step12();
+         let result12 = await step12(stockNo);
        // console.log(result2); // Step 12 結果
 
          let result13 = await step13();
@@ -888,26 +825,7 @@ function step24() {
          console.log("出現錯誤: ", error);
      }
     }
-    // executeStepsSequentially();
-
-
-    async function executeStepsSequentially2(stockNo) {
-      try {
-         let result21 = await step21(stockNo);
-
-         let result22 = await step22();
-
-
-         let result23 = await step23();
-       
-         let result24 = await step24() ; 
-
-      } catch (error) {
-         console.log("出現錯誤: ", error);
-     }
-    }
-
-
+ 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ End
    function timestampToTime(timestamp) {
         var date = new Date(timestamp * 1000);
@@ -918,19 +836,17 @@ function step24() {
 
     }
 
-
-	  function showElement1(stockNo) {
-		 if  (mask_item1.style.display == "none" ) 
-			  executeStepsSequentially1(stockNo); 
-         else
-      		  mask_item1.style.display = "none" ;
-	    }		 
-
-
-    function showElement2(stockNo) {
+    function showElement(stockNo) {
+        mask_item1.style.display="none" ;
         if  (mask_item1.style.display == "none" ) 
-           executeStepsSequentially2(stockNo); 
-            else
-               mask_item1.style.display = "none" ;
-   
-         }		  
+        {	
+          executeStepsSequentially(stockNo);      
+          mask_item1.style.display = "block" ;
+        }
+        else
+           mask_item1.style.display = "none" ;   
+         }
+         
+    function collapseElement() {
+      mask_item1.style.display="none" ;
+      }

@@ -11402,13 +11402,18 @@ html {
 	 font-size: 1.25rem;	 
  }
 
- 
-#hiddenElement,#hiddenElement1,#hiddenElement2,#hiddenElement3,#hiddenMsg1 {
-     display: none; /* Initially hide the element */
-}
+ #hiddenMsg1 {
+  display: none; 
+ }
+
+ /*
+ #hiddenElement,#hiddenElement1,#hiddenElement2,#hiddenElement3,#hiddenMsg1 {
+  display: none; 
+ }
+*/
         
 #hiddenMsg1 {
-     display: none; /* Initially hide the element */
+   display: none; /* Initially hide the element */
 	 font-size:0.5rem;
 }
         
