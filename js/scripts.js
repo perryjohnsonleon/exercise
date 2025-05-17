@@ -774,7 +774,7 @@ const element1 = document.getElementById("myBar1");
         show_SeasonRpt='<table width="30%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:40%;color:#9c3579">[' + itemYear_stockname + ']季財報</td><td style="width:40%">epsYOY(%)</td><td style="width:20%">EPS</td><td style="width:35%">累計EPS</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
         // ~~~~~ insert after
         resolve("Step 3 結果");
-        }, 250);
+        }, 500);
     });
    }
    
@@ -784,7 +784,17 @@ const element1 = document.getElementById("myBar1");
         $("#hiddenElement1").html(show_YearRpt); 
         $("#hiddenElement2").html(show_SeasonRpt);   
         resolve("Step 4 結果");
-        }, 10);
+        }, 400);
+    });
+   }
+   
+   function step15() {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+		show_YearRpt="";
+		show_SeasonRpt="";
+        resolve("Step 5 結果");
+        }, 300);
     });
    }
 
@@ -796,14 +806,15 @@ const element1 = document.getElementById("myBar1");
         return step12();        // 等 step2 完成後才進行下一步
        })
       .then(result12 => {
-	    show_YearRpt="" ;
-	    show_SeasonRpt="" ;  
+	   // show_YearRpt="" ;
+	   // show_SeasonRpt="" ;  
         return step13();        // 等 step3 完成後才進行下一步
        })
       .then(result13 => {
         return step14();
        })
 	  .then(result14 => {
+        return step15();		  
       })
       .catch(error => {
         console.log("出現錯誤: ", error);
@@ -814,17 +825,13 @@ const element1 = document.getElementById("myBar1");
       try {
          let result11 = await step11(stockNo);
        // console.log(result1); // Step 11 結果
-
          let result12 = await step12(stockNo);
        // console.log(result2); // Step 12 結果
-
          let result13 = await step13();
-       // console.log(result3); // Step 13 結果
-       
-         let result14 = await step14() ; 
-
+       // console.log(result3); // Step 13 結果   
+         let result14 = await step14(); 
        // console.log(result14); // Step 14 結果 
-
+         let result15 = await step15(); 
        // console.log("所有步驟完成");
       } catch (error) {
          console.log("出現錯誤: ", error);
@@ -853,7 +860,7 @@ const element1 = document.getElementById("myBar1");
          }
          
     function collapseElement() {
-	  show_YearRpt="" ;
-	  show_SeasonRpt="" ;
+	 // show_YearRpt="" ;
+	 // show_SeasonRpt="" ;
       mask_item1.style.display="none" ;
       }
