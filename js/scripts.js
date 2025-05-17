@@ -837,7 +837,7 @@ const element1 = document.getElementById("myBar1");
     }
 
     function showElement(stockNo) {
-        mask_item1.style.display="none" ;
+		// mask_item1.style.display="none" ;
         if  (mask_item1.style.display == "none" ) 
         {	
           executeStepsSequentially(stockNo);      
@@ -848,5 +848,6 @@ const element1 = document.getElementById("myBar1");
          }
          
     function collapseElement() {
+	  show_YearRpt="" , show_SeasonRpt="" 
       mask_item1.style.display="none" ;
       }
