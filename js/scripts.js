@@ -848,6 +848,7 @@ const element1 = document.getElementById("myBar1");
          }
          
     function collapseElement() {
-	  show_YearRpt="" , show_SeasonRpt="" 
+	  show_YearRpt="" ;
+	  show_SeasonRpt="" ;
       mask_item1.style.display="none" ;
       }
