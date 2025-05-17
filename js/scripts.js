@@ -796,9 +796,14 @@ const element1 = document.getElementById("myBar1");
         return step12();        // 等 step2 完成後才進行下一步
        })
       .then(result12 => {
+	    show_YearRpt="" ;
+	    show_SeasonRpt="" ;  
         return step13();        // 等 step3 完成後才進行下一步
        })
       .then(result13 => {
+        return step14();
+       })
+	  .then(result14 => {
       })
       .catch(error => {
         console.log("出現錯誤: ", error);
