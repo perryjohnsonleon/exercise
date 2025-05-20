@@ -1,21 +1,22 @@
 let stockId_list=['2330','1402','1102','2002','2027','1101'] ; // 台積電(2330), 東元(1504) 鴻海(2317) , 亞泥(1102) , 聯發科(2454), 大成鋼(2027) , 京元電(2449)  聯強(2347) , 台泥(1101) , 大同(2371) , 中鋼(2002)
 const fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1" , 
-		str_1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , str_3=":STOCK&quote=1" ;
+  str_1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , str_3=":STOCK&quote=1" ;
 const element1 = document.getElementById("myBar1");
 		  const mask_item1 = document.getElementById("hiddenMsg1");
-		  let show_YearRpt="" , show_SeasonRpt="" , show_MonthRpt="" , tr_line="" , itemYear_stockname="" ; 
+      let itemYear_stockname="" ;
 		  let width = 0 , intervalIds = [] , itemYear_arry11 = [] , itemYear_arry12 = [] , itemYear_arry13 = [] , itemYear_arry21 = [] , itemYear_arry22 = [] , itemYear_arry23 = [] ;
 		  let str_2=stockId_list[5], ajaxURL= str_1 + str_2 + str_3 , s01_val="0" ; 				  
           window.addEventListener('load',function(){
 	    // document.getElementById('hiddenElement').classList.add('displayElementYN');
-		  mask_item1.style.display == "none" ;
+      	let show_YearRpt="" , show_SeasonRpt="" , show_MonthRpt="" , tr_line="" ; 
+		    mask_item1.style.display == "none" ;
       getDATA();
       element1.style.width = '0%';  
       document.getElementById("s01").addEventListener("change", refreshTime); 
       document.getElementById("s02").addEventListener("change", optionSel); 			  
       });
 		                              
-          function refreshTime() {
+  function refreshTime() {
              switch ( $(this).val()) {
 					  case "A": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_a.htm' ;
@@ -168,7 +169,7 @@ const element1 = document.getElementById("myBar1");
                     		  var itemData2 = item2;	
                     		  $.each(itemData2,function(key3,item3){  
                              if (key3 === '200009') {
-                 	           $("#span11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[0] + ");'>" + item3 + "</button>"); 
+                 	           $("#span11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[0] + ",false);'>" + item3 + "</button>"); 
                              }
                              if (key3 === '6') {
                  	           $("#span12").html(item3);}
@@ -230,7 +231,7 @@ const element1 = document.getElementById("myBar1");
                     		  var itemData21 = item21;	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span21").html("<button class='btn-expand' onclick='showElement(" + stockId_list[1] + ");'>" + item31 + "</button>"); 
+								$("#span21").html("<button class='btn-expand' onclick='showElement(" + stockId_list[1] + ",false);'>" + item31 + "</button>"); 
                              }
                              if (key31 === '6') {
                  	              $("#span22").html(item31); 
@@ -283,7 +284,6 @@ const element1 = document.getElementById("myBar1");
             //  3rd stock section 
                 fetchUrl_str=fetchUrl_str1 + stockId_list[2] + fetchUrl_str2 ;	  
                  $.getJSON(fetchUrl_str,function(data){
-                    // console.log('success');
                   $.each(data,function(key11,item11){
                      if (key11 === 'data') {
                    	//  $('ul').append('<li>'+item1+'</li>');                   	
@@ -294,7 +294,7 @@ const element1 = document.getElementById("myBar1");
                     		 // console.log(itemData21); 	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span31").html("<button class='btn-expand' onclick='showElement(" + stockId_list[2] + ");'>" + item31 + "</button>");                              }
+								$("#span31").html("<button class='btn-expand' onclick='showElement(" + stockId_list[2] + ",false);'>" + item31 + "</button>");                              }
                              if (key31 === '6') {
                  	              $("#span32").html(item31); 
                              }
@@ -347,7 +347,6 @@ const element1 = document.getElementById("myBar1");
             //  4th stock section 
             fetchUrl_str=fetchUrl_str1 + stockId_list[3] + fetchUrl_str2 ;	  
             $.getJSON(fetchUrl_str,function(data){
-               // console.log('success');
              $.each(data,function(key11,item11){
                 if (key11 === 'data') {
                 //  $('ul').append('<li>'+item1+'</li>');                   	
@@ -358,7 +357,7 @@ const element1 = document.getElementById("myBar1");
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-						   $("#span41").html("<button class='btn-expand' onclick='showElement(" + stockId_list[3] + ");'>" + item31 + "</button>");                         }
+						   $("#span41").html("<button class='btn-expand' onclick='showElement(" + stockId_list[3] + ",false);'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span42").html(item31); 
                         }
@@ -411,7 +410,6 @@ const element1 = document.getElementById("myBar1");
           //  5th stock section 
             fetchUrl_str=fetchUrl_str1 + stockId_list[4] + fetchUrl_str2 ;	  
             $.getJSON(fetchUrl_str,function(data){
-               // console.log('success');
              $.each(data,function(key11,item11){
                 if (key11 === 'data') {
                 //  $('ul').append('<li>'+item1+'</li>');                   	
@@ -422,7 +420,7 @@ const element1 = document.getElementById("myBar1");
                     // console.log(itemData21); 	
                      $.each(itemData21,function(key31,item31){  
                         if (key31 === '200009') {
-							$("#span51").html("<button class='btn-expand' onclick='showElement(" + stockId_list[4] + ");'>" + item31 + "</button>");                         }
+							$("#span51").html("<button class='btn-expand' onclick='showElement(" + stockId_list[4] + ",false);'>" + item31 + "</button>");                         }
                         if (key31 === '6') {
                             $("#span52").html(item31); 
                         }
@@ -476,7 +474,6 @@ const element1 = document.getElementById("myBar1");
             if (str_2 !="0") {
               ajaxURL=str_1 + str_2 + str_3 ;	 
          $.getJSON(ajaxURL,function(data){
-            // console.log('success');
           $.each(data,function(key11,item11){
              if (key11 === 'data') {
                //  $('ul').append('<li>'+item1+'</li>');                   	
@@ -486,7 +483,7 @@ const element1 = document.getElementById("myBar1");
                       var itemData21 = item21;
                       $.each(itemData21,function(key31,item31){  
                      if (key31 === '200009') {
-						   $("#op11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[5] + ");'>" + item31 + "</button>");                      }
+						   $("#op11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[5] + ",false);'>" + item31 + "</button>");                      }
                      if (key31 === '6') {
                            $("#op12").html(item31); 
                      }
@@ -538,7 +535,6 @@ const element1 = document.getElementById("myBar1");
       //  Ending Option selected index section 
       //  Weighed index  section   
         $.getJSON('https://ws.api.cnyes.com/ws/api/v1/charting/history?symbol=TWS:TSE01:INDEX&resolution=D&quote=1&from=NaN&to=NaN',function(data){
-          // console.log('success');
         $.each(data,function(key11,item11){
             if (key11 === 'data') {
             //  $('ul').append('<li>'+item1+'</li>');                   	
@@ -576,7 +572,6 @@ const element1 = document.getElementById("myBar1");
               }) ;                 		
             }
             });
-          //  console.log(item1[0]);
               if ($("#span24").html() >= $("#span22").html() - $("#span23").html())
                 {
                     $("#span24").addClass("highestPrice");
@@ -598,7 +593,7 @@ const element1 = document.getElementById("myBar1");
        };  
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Begin
-   function step11(stockNo) {
+   function step11(stockNo,firstVisit) {
         return new Promise((resolve) => {
         setTimeout(() => {
 			// Step1 URL Begin
@@ -626,8 +621,7 @@ const element1 = document.getElementById("myBar1");
                     		    var itemData2 = item2;
                     		    var itemDataTemp ;
                     		   // YOY - starting
-                    		  $.each(itemData2,function(key3,item3){
-								            // console.log(item3) ;             
+                    		  $.each(itemData2,function(key3,item3){          
                                     /*            					     
                             $.each(itemDataTemp,function(i,val) {
                                          console.log ( i + val );
@@ -650,7 +644,7 @@ const element1 = document.getElementById("myBar1");
        });
    }
 
-   function step12(stockNo) {
+   function step12(stockNo,firstVisit) {
         return new Promise((resolve) => {
         setTimeout(() => {
        // Step2 URL Begin
@@ -698,7 +692,7 @@ const element1 = document.getElementById("myBar1");
       });
    }
 
-   function step13() {
+   function step13(stockNo,firstVisit) {
         return new Promise((resolve) => {
         setTimeout(() => {
         tr_line ="",show_YearRpt="" ;
@@ -778,23 +772,30 @@ const element1 = document.getElementById("myBar1");
     });
    }
    
-   function step14() {
+   function step14(stockNo,firstVisit) {
         return new Promise((resolve) => {
         setTimeout(() => {
-        $("#hiddenElement1").html(show_YearRpt); 
-        $("#hiddenElement2").html(show_SeasonRpt);   
-        resolve("Step 4 結果");
-        }, 400);
+        if (firstVisit === undefined || firstVisit === null) {
+			      $("#hiddenElement1").html("&nbsp;"); 
+            $("#hiddenElement2").html("&nbsp;"); 
+            $("#collapseBtn").html("&nbsp;");   
+        }
+        else {
+            $("#hiddenElement1").html(show_YearRpt); 
+            $("#hiddenElement2").html(show_SeasonRpt);  
+            $("#collapseBtn").html("<img src='collapse.png' style='cursor:pointer;' onclick='collapseElement()' />");
+        }   
+          resolve("Step 4 結果");
+        }, 100);
     });
    }
    
-   function step15() {
+   function step15(stockNo) {
         return new Promise((resolve) => {
         setTimeout(() => {
-		show_YearRpt="";
-		show_SeasonRpt="";
+        mask_item1.style.display = "block" ;
         resolve("Step 5 結果");
-        }, 300);
+        },5);
     });
    }
 
@@ -806,9 +807,7 @@ const element1 = document.getElementById("myBar1");
         return step12();        // 等 step2 完成後才進行下一步
        })
       .then(result12 => {
-	   // show_YearRpt="" ;
-	   // show_SeasonRpt="" ;  
-        return step13();        // 等 step3 完成後才進行下一步
+       return step13();        // 等 step3 完成後才進行下一步
        })
       .then(result13 => {
         return step14();
@@ -816,22 +815,24 @@ const element1 = document.getElementById("myBar1");
 	  .then(result14 => {
         return step15();		  
       })
+    .then(result15 => {
+        })
       .catch(error => {
         console.log("出現錯誤: ", error);
       });
 	// ===使用 then == Ending========================== */
 	  
-      async function executeStepsSequentially(stockNo) {
+    async function executeStepsSequentially(stockNo,firstVisit) {
       try {
-         let result11 = await step11(stockNo);
+         let result11 = await step11(stockNo,firstVisit);
        // console.log(result1); // Step 11 結果
-         let result12 = await step12(stockNo);
+         let result12 = await step12(stockNo,firstVisit);
        // console.log(result2); // Step 12 結果
-         let result13 = await step13();
+         let result13 = await step13(stockNo,firstVisit);
        // console.log(result3); // Step 13 結果   
-         let result14 = await step14(); 
+         let result14 = await step14(stockNo,firstVisit); 
        // console.log(result14); // Step 14 結果 
-         let result15 = await step15(); 
+         let result15 = await step15(stockNo,firstVisit); 
        // console.log("所有步驟完成");
       } catch (error) {
          console.log("出現錯誤: ", error);
@@ -848,19 +849,10 @@ const element1 = document.getElementById("myBar1");
 
     }
 
-    function showElement(stockNo) {
-		// mask_item1.style.display="none" ;
-        if  (mask_item1.style.display == "none" ) 
-        {	
-          executeStepsSequentially(stockNo);      
-          mask_item1.style.display = "block" ;
-        }
-        else
-           mask_item1.style.display = "none" ;   
-         }
+    function showElement(stockNo,firstVisit) {
+          executeStepsSequentially(stockNo,firstVisit);      
+    }
          
     function collapseElement() {
-	 // show_YearRpt="" ;
-	 // show_SeasonRpt="" ;
       mask_item1.style.display="none" ;
       }
