@@ -131,7 +131,7 @@ const element1 = document.getElementById("myBar1");
                     } 
 					
                    str_2= $(this).val() ;
-                   console.log(str_2) ;
+                   console.log(2,str_2) ;
 				   getDATA();
                  //  str_2=document.getElementById("s02").value ;
 				   while(intervalIds.length){
