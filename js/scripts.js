@@ -768,7 +768,7 @@ const element1 = document.getElementById("myBar1");
         show_SeasonRpt='<table width="30%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:40%;color:#9c3579">[' + itemYear_stockname + ']季財報</td><td style="width:40%">epsYOY(%)</td><td style="width:20%">EPS</td><td style="width:35%">累計EPS</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
         // ~~~~~ insert after
         resolve("Step 3 結果");
-        }, 500);
+        }, 400);
     });
    }
    
@@ -786,7 +786,7 @@ const element1 = document.getElementById("myBar1");
             $("#collapseBtn").html("<img src='collapse.png' style='cursor:pointer;' onclick='collapseElement()' />");
         }   
           resolve("Step 4 結果");
-        }, 100);
+        }, 10);
     });
    }
    
