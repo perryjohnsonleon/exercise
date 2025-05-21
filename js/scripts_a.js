@@ -39,33 +39,36 @@ const element1 = document.getElementById("myBar1");
 					  case "Z": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_z.htm' ;
 							break;
-                      case "0": 
-                           width = 100;
-                           refSec = 99999 ;
-                           element1.style.width = '0%'; 
-                           break;
-                      case "1": 
-                      	   refSec = 3000 ;
-                           break;
-                      case "2":
-                           refSec = 5000 ;
-                           break;
-                      case "3": 
-                           refSec = 10000 ;
-                           break;
-                      case "5": 
-                      	   refSec = 30000 ;
-                           break;
-                      case "6": 
-                    	   refSec = 60000 ;
-                           break;
-                      case "7": 
-                   	      refSec = 600000 ;
-                           break; 
-                      case "10": 
-                   	      refSec = 1800000 ;
-                           break;                                     
-                      default:
+            case "-1": 
+            window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
+            break;
+            case "0": 
+                  width = 100;
+                  refSec = 99999 ;
+                  element1.style.width = '0%'; 
+                  break;
+            case "1": 
+                  refSec = 3000 ;
+                  break;
+            case "2":
+                  refSec = 5000 ;
+                  break;
+            case "3": 
+                  refSec = 10000 ;
+                  break;
+            case "5": 
+                  refSec = 30000 ;
+                  break;
+            case "6": 
+                refSec = 60000 ;
+                  break;
+            case "7": 
+                refSec = 600000 ;
+                  break; 
+            case "10": 
+                refSec = 1800000 ;
+                  break;                                     
+            default:
 						  return;
                     } 
 				   while(intervalIds.length){
@@ -855,4 +858,5 @@ const element1 = document.getElementById("myBar1");
          
     function collapseElement() {
       mask_item1.style.display="none" ;
+      console.log(999) ;
       }
