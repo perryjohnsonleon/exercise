@@ -640,7 +640,7 @@ const element1 = document.getElementById("myBar1");
                 });	
           // Step1 URL End	
            resolve("Step 1 結果");
-        }, 1000);
+        }, 500);
        });
    }
 
@@ -688,7 +688,7 @@ const element1 = document.getElementById("myBar1");
         // Step2 URL End   
        // ~~~~~~~ insert after
         resolve("Step 2 結果");
-        }, 1000);
+        }, 500);
       });
    }
 
