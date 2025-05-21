@@ -483,7 +483,7 @@ const element1 = document.getElementById("myBar1");
                       var itemData21 = item21;
                       $.each(itemData21,function(key31,item31){  
                      if (key31 === '200009') {
-						   $("#op11").html("<button class='btn-expand' onclick='showElement(" + stockId_list[5] + ",false);'>" + item31 + "</button>");                      }
+						   $("#op11").html("<button class='btn-expand' onclick='showElement(" + str_2 + ",false);'>" + item31 + "</button>");                      }
                      if (key31 === '6') {
                            $("#op12").html(item31); 
                      }
