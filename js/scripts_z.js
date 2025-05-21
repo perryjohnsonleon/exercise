@@ -34,34 +34,35 @@
 					  case "-1": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
 							break;
-                      case "0": 
-                           width = 100;
-                           refSec = 99999 ;
-                           element1.style.width = '0%'; 
-                           break;
-                      case "1": 
-                      	   refSec = 3000 ;
-                           break;
-                      case "2":
-                           refSec = 5000 ;
-                           break;
-                      case "3": 
-                           refSec = 10000 ;
-                           break;
-                      case "5": 
-                      	   refSec = 30000 ;
-                           break;
-                      case "6": 
-                    	   refSec = 60000 ;
-                           break;
-                      case "7": 
-                   	      refSec = 600000 ;
-                           break; 
-                      case "10": 
-                   	      refSec = 1800000 ;
-                           break;                                     
-                      default:
-						  return;
+                  case "0": 
+                     width = 100;
+                     refSec = 99999 ;
+                     element1.style.width = '0%'; 
+                     break;
+                  case "1": 
+                     refSec = 3000 ;
+                     break;
+                  case "2":
+                     refSec = 5000 ;
+                     break;
+                  case "3": 
+                     refSec = 10000 ;
+                     break;
+                  case "5": 
+                     refSec = 30000 ;
+                     break;
+                  case "6": 
+                  refSec = 60000 ;
+                     break;
+                  case "7": 
+                     refSec = 600000 ;
+                     break; 
+                  case "10": 
+                     refSec = 1800000 ;
+                     break;                                     
+                  default:
+                     refSec = 60000 ;
+                     return;
                     } 
 				   while(intervalIds.length){
                           clearInterval(intervalIds.pop());

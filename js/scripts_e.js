@@ -128,7 +128,8 @@ const element1 = document.getElementById("myBar1");
                    	      refSec = 1800000 ;
                           break;                                     
                       default:
-                         return;
+                          refSec = 60000 ;
+                          return;
                     } 
 					
                    str_2= $(this).val() ;

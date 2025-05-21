@@ -93,7 +93,7 @@ const element1 = document.getElementById("myBar1");
 			 switch ( s01_val ) {
                       case "0": 
                           width = 100;
-						  refSec = 99999 ;
+						              refSec = 99999 ;
                        	  element1.style.width = '0%'; 
                           break;
                       case "1": 
@@ -127,11 +127,10 @@ const element1 = document.getElementById("myBar1");
                    	      refSec = 1800000 ;
                           break;                                     
                       default:
-                         return;
-                    } 
-					
+                        refSec = 60000 ;
+                        return;
+                    } 					
                    str_2= $(this).val() ;
-                   console.log(2,str_2) ;
 				   getDATA();
                  //  str_2=document.getElementById("s02").value ;
 				   while(intervalIds.length){
