@@ -90,7 +90,7 @@ const element1 = document.getElementById("myBar1");
 			
       function optionSel() {
        str_2= $(this).val() ;
-       conmsole.log("aaa=",str_2)
+       console.log("aaa=",str_2)
 			 s01_val=document.getElementById("s01").value ;
 			 switch ( s01_val ) {
                       case "0": 
