@@ -132,6 +132,7 @@ const element1 = document.getElementById("myBar1");
                     } 
 					
                    str_2= $(this).val() ;
+                   console.log ("aaa=",str_2)
 				   getDATA();
                  //  str_2=document.getElementById("s02").value ;
 				   while(intervalIds.length){
@@ -475,8 +476,8 @@ const element1 = document.getElementById("myBar1");
            });    
          //  Ending 5th stock section                                                    
           //  Option selected index  section
-            if (str_2 !="0") {
-              ajaxURL=str_1 + str_2 + str_3 ;	 
+        if (str_2 !="0") {
+          ajaxURL=str_1 + str_2 + str_3 ;	 
          $.getJSON(ajaxURL,function(data){
           $.each(data,function(key11,item11){
              if (key11 === 'data') {
