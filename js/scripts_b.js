@@ -476,7 +476,7 @@ const element1 = document.getElementById("myBar1");
            });    
          //  Ending 5th stock section                                                    
           //  Option selected index  section
-          conmsole.log("bbb=",str_2) 
+          console.log("bbb=",str_2) 
         if (str_2 !="0") {
           ajaxURL=str_1 + str_2 + str_3 ;	 
          $.getJSON(ajaxURL,function(data){
