@@ -89,8 +89,7 @@ const element1 = document.getElementById("myBar1");
             }
 			
       function optionSel() {
-       var s02= $(this).val() ; 
-       console.log ("aaa=",s02) ;
+       str_2= $(this).val() ;
 			 s01_val=document.getElementById("s01").value ;
 			 switch ( s01_val ) {
                       case "0": 
@@ -133,7 +132,6 @@ const element1 = document.getElementById("myBar1");
                           return;
                     } 
 					
-          str_2= $(this).val() ;
 				   getDATA();
                  //  str_2=document.getElementById("s02").value ;
 				   while(intervalIds.length){
