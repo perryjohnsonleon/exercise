@@ -90,6 +90,7 @@ const element1 = document.getElementById("myBar1");
 			
       function optionSel() {
        str_2= $(this).val() ;
+       conmsole.log("aaa=",str_2)
 			 s01_val=document.getElementById("s01").value ;
 			 switch ( s01_val ) {
                       case "0": 
@@ -475,6 +476,7 @@ const element1 = document.getElementById("myBar1");
            });    
          //  Ending 5th stock section                                                    
           //  Option selected index  section
+          conmsole.log("bbb=",str_2) 
         if (str_2 !="0") {
           ajaxURL=str_1 + str_2 + str_3 ;	 
          $.getJSON(ajaxURL,function(data){
