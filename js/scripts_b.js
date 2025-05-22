@@ -81,7 +81,7 @@ const element1 = document.getElementById("myBar1");
 					 else 
 					 {
           while(intervalIds.length){
-                          clearInterval(intervalIds.pop());
+                  clearInterval(intervalIds.pop());
           }
 						
 					 }
@@ -95,7 +95,7 @@ const element1 = document.getElementById("myBar1");
 			 switch ( s01_val ) {
                       case "0": 
                           width = 100;
-						  refSec = 99999 ;
+						              refSec = 99999 ;
                        	  element1.style.width = '0%'; 
                           break;
                       case "1": 
@@ -132,7 +132,9 @@ const element1 = document.getElementById("myBar1");
                           refSec = 60000 ;
                           return;
                     } 
-					
+            while(intervalIds.length){
+                      clearInterval(intervalIds.pop());
+            }
 				   getDATA();
                  //  str_2=document.getElementById("s02").value ;
 				   while(intervalIds.length){
