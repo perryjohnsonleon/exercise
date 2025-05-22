@@ -40,7 +40,7 @@ const element1 = document.getElementById("myBar1");
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise/index_z.htm' ;
 							break;
             case "-1": 
-            window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
+              window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
             break;
             case "0": 
                   width = 100;
@@ -89,7 +89,8 @@ const element1 = document.getElementById("myBar1");
             }
 			
       function optionSel() {
-       console.log ("aaa=",str_2)
+       var s02= $(this).val() ; 
+       console.log ("aaa=",s02) ;
 			 s01_val=document.getElementById("s01").value ;
 			 switch ( s01_val ) {
                       case "0": 
