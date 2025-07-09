@@ -95,15 +95,14 @@
             $.each(data,function(key1,item1){
                if (key1 === 'data') {
                //  $('ul').append('<li>'+item1+'</li>');
-              var itemData = item1 ;
-              span_rpt="<span class='span_rpt'>(<button onclick='showElement(1102);'>M</button>)</span>" ; 	          
+              var itemData = item1 ;              
               $.each(itemData,function(key2,item2){
                 if (key2  === 'quote' ) {
                     var itemData2 = item2;
                   // console.log(itemData2); 	
                     $.each(itemData2,function(key3,item3){  
                        if (key3 === '200009') {
-                        $("#item-11").html(item3 + span_rpt); 
+                        $("#item-11").html("<span class='span_rpt'><button class='btn-expand' onclick='showElement(1102,false);'>" + item3 + "</button></span>"); 
                        }
                        if (key3 === '6') {
                         $("#item-12").html(item3);}
@@ -159,15 +158,14 @@
             $.each(data,function(key1,item1){
                if (key1 === 'data') {
                //  $('ul').append('<li>'+item1+'</li>');
-              var itemData = item1 ;
-              span_rpt="<span class='span_rpt'>(<button onclick='showElement(1102);'>M</button>)</span>" ; 	          
+              var itemData = item1 ;         
               $.each(itemData,function(key2,item2){
                 if (key2  === 'quote' ) {
                     var itemData2 = item2;
                   // console.log(itemData2); 	
                     $.each(itemData2,function(key3,item3){  
                        if (key3 === '200009') {
-                        $("#item-21").html(item3 + span_rpt); 
+                        $("#item-21").html("<span class='span_rpt'><button class='btn-expand' onclick='showElement(2353,false);'>" + item3 + "</button></span>"); 
                        }
                        if (key3 === '6') {
                         $("#item-22").html(item3);}
