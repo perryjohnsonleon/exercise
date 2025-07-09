@@ -152,7 +152,69 @@
                  }                  
             }
            });
-          });                   
+          }); 
+          
+          $.getJSON('https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:2353:STOCK&quote=1',function(data){
+              // console.log('success');
+            $.each(data,function(key1,item1){
+               if (key1 === 'data') {
+               //  $('ul').append('<li>'+item1+'</li>');
+              var itemData = item1 ;
+              span_rpt="<span class='span_rpt'>(<button onclick='showElement(1102);'>M</button>)</span>" ; 	          
+              $.each(itemData,function(key2,item2){
+                if (key2  === 'quote' ) {
+                    var itemData2 = item2;
+                  // console.log(itemData2); 	
+                    $.each(itemData2,function(key3,item3){  
+                       if (key3 === '200009') {
+                        $("#item-21").html(item3 + span_rpt); 
+                       }
+                       if (key3 === '6') {
+                        $("#item-22").html(item3);}
+                       if (key3 === '11') {
+                           if (item3> 0) 
+                               {
+                                  $("#item-22").addClass("risePrice"); 
+                                  $("#item-23").addClass("risePrice"); 
+                               } 
+                           else {
+                              if (item3 === 0){ 
+                                 $("#item-22").addClass("flatPrice"); 
+                                 $("#item-23").addClass("flatPrice"); 		
+                              }
+                              else {
+                                 $("#item-22").addClass("fellPrice"); 
+                                 $("#item-23").addClass("fellPrice"); 	
+                              }
+                           }
+                           $("#item-23").html(item3); 
+                       } 
+                       if (key3 === '22') {
+                            $("#item-24").html(item3); 
+                       }
+                       if (key3 === '23') {
+                            $("#item-25").html(item3); 
+                       } 
+                  }) ;                 		
+                }
+               });
+                 if ($("#item-24").html() >= $("#item-22").html() - $("#item-23").html())
+                 {
+                     $("#item-24").addClass("highestPrice");
+                 }  
+                 else {
+                     $("#item-24").addClass("lowestPrice");
+                 }
+                 if ($("#item-25").html() >= $("#item-22").html() - $("#item-23").html())
+                 {
+                     $("#item-25").addClass("highestPrice");
+                 }  
+                 else {
+                     $("#item-25").addClass("lowestPrice");
+                 }                  
+            }
+           });
+          });              
         //  Weighed index  section   
            $.getJSON('https://ws.api.cnyes.com/ws/api/v1/charting/history?symbol=TWS:TSE01:INDEX&resolution=D&quote=1&from=NaN&to=NaN',function(data){
               // console.log('success');

@@ -298,7 +298,7 @@ const element1 = document.getElementById("myBar1");
                     		 // console.log(itemData21); 	
                     		  $.each(itemData21,function(key31,item31){  
                              if (key31 === '200009') {
-								$("#span31").html("<button class='btn-expand' onclick='showElement(" + stockId_list[2] + ",false);'>" + item31 + "</button>");                              }
+								    $("#span31").html("<button class='btn-expand' onclick='showElement(" + stockId_list[2] + ",false);'>" + item31 + "</button>");                              }
                              if (key31 === '6') {
                  	              $("#span32").html(item31); 
                              }
