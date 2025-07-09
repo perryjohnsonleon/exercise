@@ -357,3 +357,266 @@
     };      
          
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Begin
+   function step11(stockNo,firstVisit) {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+			// Step1 URL Begin
+			   $("#hiddenElement1").html("<span>Waitting data ...<span>"); 
+				   var urlStr= "https://marketinfo.api.cnyes.com/mi/api/v1/financialIndicator/revenue/TWS:" + stockNo + ":STOCK?year=5&to=1572364800";
+                $.getJSON(urlStr,function(data){
+                  $.each(data,function(key1,item1){
+                     if (key1 === 'data') {
+                        var itemData = item1[0]; 							
+                        $.each(itemData,function(key2,item2){
+                    if (key2  === 'name' ) {
+                             itemYear_stockname = item2 ;
+                            }								
+                    	   if (key2  === 'revenue' ) {
+                            itemYear_arry12= item2 ;
+                    		    var itemData2 = item2;
+                    		    var itemDataTemp ;
+                    		  $.each(itemData2,function(key3,item3){
+
+                                 }) ; 
+ 		                         		              		
+                    	}  //  ***************************************
+                    	   if (key2  === 'revenueYOY' ) {
+							   	          itemYear_arry13= item2;
+                    		    var itemData2 = item2;
+                    		    var itemDataTemp ;
+                    		   // YOY - starting
+                    		  $.each(itemData2,function(key3,item3){          
+                                    /*            					     
+                            $.each(itemDataTemp,function(i,val) {
+                                         console.log ( i + val );
+                                       });
+                                     */
+                            }) ; 
+                    		    // YOY - Ending              		              		
+                    	}  //  ***************************************						
+                    	   if (key2  === 'time' ) {
+							              itemYear_arry11= item2 ;		
+                    	}  //  ***************************************							
+
+                      });               
+                  }
+                 });
+                });	
+          // Step1 URL End	
+           resolve("Step 1 結果");
+        }, 500);
+       });
+   }
+
+   function step12(stockNo,firstVisit) {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+       // Step2 URL Begin
+       var urlStr= "https://marketinfo.api.cnyes.com/mi/api/v1/financialIndicator/eps/TWS:" + stockNo + ":STOCK?resolution=Q&acc=false&year=5&to=1573488000";
+            $.getJSON(urlStr,function(data){
+              $.each(data,function(key1,item1){
+                if (key1 === 'data') {
+                    //  $('ul').append('<li>'+item1+'</li>');
+                    var itemData = item1[0]; 							
+                    $.each(itemData,function(key2,item2){
+                      if (key2  === 'name' ) {
+                          itemYear_stockname = item2 ;
+                        }								
+                      if (key2  === 'epsYOY' ) {
+                        itemYear_arry22= item2 ;
+                        var itemData2 = item2;
+                        var itemDataTemp ;
+                       // YearRevenue - starting
+                        $.each(itemData2,function(key3,item3){
+
+                        }) ; 
+                        // YearRevenue - Ending                                                  
+                  }  //  ***************************************
+                      if (key2  === 'eps' ) {
+                          itemYear_arry23= item2;
+                        var itemData2 = item2;
+                        var itemDataTemp ;
+                       // YOY - starting
+                      $.each(itemData2,function(key3,item3){
+
+                      }) ; 
+                      // YOY - Ending              		              		
+                  }  //  ***************************************						
+                if (key2  === 'time' ) {
+                        itemYear_arry21= item2 ;		
+                  }  //  ***************************************							
+                  });               
+              }
+             });
+            });		
+        // Step2 URL End   
+       // ~~~~~~~ insert after
+        resolve("Step 2 結果");
+        }, 500);
+      });
+   }
+
+   function step13(stockNo,firstVisit) {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+        tr_line ="",show_YearRpt="" ;
+        var item2currency=0 ;
+        for (let i = 0; i < itemYear_arry11.length; i++) {
+            item2currency = (itemYear_arry12[i]/1000) + "" ;
+            item2currency = item2currency.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+            tr_line = tr_line + '<tr><td>' + timestampToTime(itemYear_arry11[i]) + '</td><td>' + item2currency + '</td><td>' +　itemYear_arry13[i]　+'</td></tr>' ;
+        } ;						 
+		    show_YearRpt='<table width="33%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:33%;color:#9c3579">[' + itemYear_stockname + ']月財報</td><td style="width:25%">營收(千元)</td><td style="width:33%">年增率</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
+        // ~~~~~ insert before
+        tr_line =""
+        var item2currency=0;
+        var espEarning_digit=0; 
+        var espDate_arry = [...itemYear_arry21].reverse();
+        var espEarning_arry = [...itemYear_arry23].reverse(); 
+        var accuEarning_arry = espEarning_arry ;
+        var text,subStr,quarterDateStr,quarterDate_arry ;
+        for (var i = 0; i < espDate_arry.length; i++) {
+          espDate_arry[i]=timestampToTime(espDate_arry[i]) ;
+          subStr =espDate_arry[i].substring(espDate_arry[i].indexOf("-")+1) ;
+          switch (subStr) {
+            case "01": 
+                accuEarning_arry[i]= espEarning_arry[i] ;
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                break ;
+            case "04": 
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                accuEarning_arry[i] += espEarning_arry[i-1] ;
+                espEarning_digit= accuEarning_arry[i] ;
+                accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ; 
+                break;
+            case "07": 
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                accuEarning_arry[i] += espEarning_arry[i-1] ;
+                espEarning_digit= accuEarning_arry[i] ;
+                accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ;
+                break; 
+            case "10": 
+                espEarning_digit=accuEarning_arry[i] ;
+                accuEarning_arry[i]=parseFloat(espEarning_digit.toFixed(2)) ;
+                accuEarning_arry[i] += espEarning_arry[i-1] ;
+                espEarning_digit= accuEarning_arry[i] ;
+                accuEarning_arry[i]= parseFloat(espEarning_digit.toFixed(2)) ;
+                break;      
+
+          }     
+        } ; 
+        accuEarning_arry.reverse() ;
+        for (var i = 0; i < itemYear_arry21.length; i++) {
+            item2currency = itemYear_arry22[i]  ;
+            quarterDateStr=timestampToTime(itemYear_arry21[i]) ;
+            quarterDate_arry= quarterDateStr.split("-") ;
+            switch (quarterDate_arry[1]) {
+                case "01": 
+                    quarterDate_arry[1]="Q1"
+                    break;
+                case "04": 
+                    quarterDate_arry[1]="Q2"
+                    break;
+                case "07": 
+                    quarterDate_arry[1]="Q3"
+                    break;
+                case "10": 
+                    quarterDate_arry[1]="Q4"
+                    break;
+            }
+            tr_line = tr_line + '<tr><td><b>' +  quarterDate_arry[0] + quarterDate_arry[1] + '</b></td><td>' + item2currency + '</td><td>' +　itemYear_arry23[i]　+'</td><td>' +　accuEarning_arry[i]　+'</td></tr>' ;
+        } ;
+        show_SeasonRpt='<table width="30%" style="color: rgb(132, 141, 151); font-size: 14px; text-align: right;">' + '<thead><tr><td style="width:40%;color:#9c3579">[' + itemYear_stockname + ']季財報</td><td style="width:40%">epsYOY(%)</td><td style="width:20%">EPS</td><td style="width:35%">累計EPS</td></thead><tbody>' + tr_line  + '</tbody></table>'  ;
+        // ~~~~~ insert after
+        resolve("Step 3 結果");
+        }, 400);
+    });
+   }
+   
+   function step14(stockNo,firstVisit) {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+        if (firstVisit === undefined || firstVisit === null) {
+			      $("#hiddenElement1").html("&nbsp;"); 
+            $("#hiddenElement2").html("&nbsp;"); 
+            $("#collapseBtn").html("&nbsp;");   
+        }
+        else {
+            $("#hiddenElement1").html(show_YearRpt); 
+            $("#hiddenElement2").html(show_SeasonRpt);  
+            $("#collapseBtn").html("<img src='collapse.png' style='cursor:pointer;' onclick='collapseElement()' />");
+        }   
+          resolve("Step 4 結果");
+        }, 10);
+    });
+   }
+   
+   function step15(stockNo) {
+        return new Promise((resolve) => {
+        setTimeout(() => {
+        mask_item1.style.display = "block" ;
+        resolve("Step 5 結果");
+        },5);
+    });
+   }
+
+
+   // 使用 then 來串接 Promise，依序執行
+   // ==========================
+   step11()
+      .then(result11 => {
+        return step12();        // 等 step2 完成後才進行下一步
+       })
+      .then(result12 => {
+       return step13();        // 等 step3 完成後才進行下一步
+       })
+      .then(result13 => {
+        return step14();
+       })
+	  .then(result14 => {
+        return step15();		  
+      })
+    .then(result15 => {
+        })
+      .catch(error => {
+        console.log("出現錯誤: ", error);
+      });
+	// ===使用 then == Ending========================== */
+	  
+    async function executeStepsSequentially(stockNo,firstVisit) {
+      try {
+         let result11 = await step11(stockNo,firstVisit);
+       // console.log(result1); // Step 11 結果
+         let result12 = await step12(stockNo,firstVisit);
+       // console.log(result2); // Step 12 結果
+         let result13 = await step13(stockNo,firstVisit);
+       // console.log(result3); // Step 13 結果   
+         let result14 = await step14(stockNo,firstVisit); 
+       // console.log(result14); // Step 14 結果 
+         let result15 = await step15(stockNo,firstVisit); 
+       // console.log("所有步驟完成");
+      } catch (error) {
+         console.log("出現錯誤: ", error);
+     }
+    }
+ 
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ End
+   function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) ;
+
+	    return Y+M ;
+
+    }
+
+    function showElement(stockNo,firstVisit) {
+          executeStepsSequentially(stockNo,firstVisit);      
+    }
+         
+    function collapseElement() {
+      mask_item1.style.display="none" ;
+      }
